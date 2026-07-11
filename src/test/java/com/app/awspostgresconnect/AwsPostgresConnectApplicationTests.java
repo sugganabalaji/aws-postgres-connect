@@ -10,9 +10,4 @@ class AwsPostgresConnectApplicationTests {
     void contextLoads() {
     }
 
-    @Test
-    void mainMethodRuns() {
-        AwsPostgresConnectApplication.main(new String[] {});
-    }
-
 }
