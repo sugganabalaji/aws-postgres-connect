@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: aws-postgres-connect
+
+
+  # jdbc:postgressql://<public_dns>:<pot>/<db-name>
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sal: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+# Swagger LOCAL Url http://localhost:8080/swagger-ui/index.html
+# or
+# Swagger AWS Url http://<your-ec2-or-loadbalancer>:80/swagger-ui/index.html

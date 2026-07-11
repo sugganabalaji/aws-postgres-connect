@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > EmployeeService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.app.awspostgresconnect.service</a>
+</div>
+
+<h1>Coverage Summary for Class: EmployeeService (com.app.awspostgresconnect.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmployeeService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (20/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.app.awspostgresconnect.service;
+&nbsp;
+&nbsp;import com.app.awspostgresconnect.dto.EmployeeDTO;
+&nbsp;import com.app.awspostgresconnect.entity.Employee;
+&nbsp;import com.app.awspostgresconnect.repository.EmployeeRepository;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;import org.springframework.beans.BeanUtils;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class EmployeeService {</b>
+&nbsp;
+<b class="fc">&nbsp;    Logger logger = LoggerFactory.getLogger(EmployeeService.class);</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private EmployeeRepository repository;
+&nbsp;
+&nbsp;    public List&lt;Employee&gt; findAll() {
+<b class="fc">&nbsp;        logger.info(&quot;findAll called&quot;);</b>
+<b class="fc">&nbsp;        return repository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Optional&lt;Employee&gt; findById(Long id) {
+<b class="fc">&nbsp;        logger.info(&quot;findById called with id: &quot; + id);</b>
+<b class="fc">&nbsp;        return repository.findById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Employee save(EmployeeDTO employeeDTO) {
+<b class="fc">&nbsp;        logger.info(&quot;save called&quot;);</b>
+<b class="fc">&nbsp;        Employee employee = new Employee();</b>
+<b class="fc">&nbsp;        BeanUtils.copyProperties(employeeDTO, employee);</b>
+<b class="fc">&nbsp;        return repository.save(employee);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Employee update(Long id, EmployeeDTO employeeDTO) {
+<b class="fc">&nbsp;        logger.info(&quot;update called&quot;);</b>
+<b class="fc">&nbsp;        Employee employee = new Employee();</b>
+<b class="fc">&nbsp;        BeanUtils.copyProperties(employeeDTO, employee);</b>
+<b class="fc">&nbsp;        employee.setId(id);</b>
+<b class="fc">&nbsp;        return repository.save(employee);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean delete(Long id) {
+<b class="fc">&nbsp;        logger.info(&quot;delete called with id: &quot; + id);</b>
+<b class="fc">&nbsp;        if (repository.existsById(id)) {</b>
+<b class="fc">&nbsp;            repository.deleteById(id);</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-07-11 19:20</div>
+</div>
+</body>
+</html>
