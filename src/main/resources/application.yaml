@@ -2,21 +2,16 @@ spring:
   application:
     name: aws-postgres-connect
 
-
   # jdbc:postgressql://<public_dns>:<pot>/<db-name>
-  # My Local postgres DB
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: root
-    driver-class-name: org.postgresql.Driver
-
-  # AWS RDS postgres DB
-#  datasource:
+#   My Local postgres DB
 #    url: jdbc:postgresql://localhost:5432/postgres
-#    username: postgres
+#   AWS RDS postgres DB
+    url: jdbc:postgresql://aws-rds-postgres-instance.cdkw246sgazm.ap-south-1.rds.amazonaws.com:5432/postgres
+    username: postgres
 #    password: root
-#    driver-class-name: org.postgresql.Driver
+    password: root123456
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     show-sal: true
