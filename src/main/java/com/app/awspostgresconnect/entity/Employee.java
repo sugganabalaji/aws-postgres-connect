@@ -1,5 +1,6 @@
 package com.app.awspostgresconnect.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,9 +14,12 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 50)
     private String name;
     private double salary;
+    @Column(length = 100)
     private String companyName;
+    @Column(length = 25)
     private String departmentName;
     private LocalDate dateOfJoining;
 
