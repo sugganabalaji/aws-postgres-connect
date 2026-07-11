@@ -4,11 +4,19 @@ spring:
 
 
   # jdbc:postgressql://<public_dns>:<pot>/<db-name>
+  # Local postgres DB
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
+
+  # AWS RDS postgres DB
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    username: postgres
+#    password: root
+#    driver-class-name: org.postgresql.Driver
 
   jpa:
     show-sal: true
