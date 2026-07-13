@@ -23,6 +23,16 @@ public class Employee {
     private String departmentName;
     private LocalDate dateOfJoining;
 
+    public Employee() {}
+
+    public Employee(String name, double salary, String companyName, String departmentName, LocalDate dateOfJoining) {
+        this.name = name;
+        this.salary = salary;
+        this.companyName = companyName;
+        this.departmentName = departmentName;
+        this.dateOfJoining = dateOfJoining;
+    }
+
     public Long getId() {
         return id;
     }

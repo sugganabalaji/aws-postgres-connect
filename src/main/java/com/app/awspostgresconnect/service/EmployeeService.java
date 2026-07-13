@@ -53,4 +53,15 @@ public class EmployeeService {
         }
         return false;
     }
+
+    public int findEmployeesCount() {
+        logger.info("findEmployeesCount called");
+        List<Employee> employees = repository.findAll();
+        if(employees.isEmpty()) {
+            logger.info("EmployeesCount: 0");
+            return 0;
+        }
+        logger.info("EmployeesCount: " + employees.size());
+        return employees.size();
+    }
 }
