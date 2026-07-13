@@ -6,6 +6,7 @@ import com.app.awspostgresconnect.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,7 +29,8 @@ public class EmployeeController {
 
     Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
-    private static final String DB_NAME = "Postgres DB";
+    @Value("${spring.profiles.active}")
+    private String dbName;
 
     @Autowired
     private EmployeeService service;
@@ -45,7 +47,7 @@ public class EmployeeController {
         List<Employee> allEmployees = service.findAll();
         logger.info("findAll ended");
         if(allEmployees.isEmpty()) {
-            return new ResponseEntity<>("Employees not saved in " + DB_NAME, HttpStatus.OK);
+            return new ResponseEntity<>("Employees not saved in " + dbName, HttpStatus.OK);
         }
         return new ResponseEntity<>(allEmployees, HttpStatus.OK);
     }
@@ -58,8 +60,8 @@ public class EmployeeController {
             logger.info("findById ended");
             return new ResponseEntity<>(optional.get(), HttpStatus.OK);
         } else {
-            logger.error("Employee not found with id: " + id + " in " + DB_NAME);
-            return new ResponseEntity<>("Employee not found with id: " + id + " in postgres DB", HttpStatus.OK);
+            logger.error("Employee not found with id: " + id + " in " + dbName);
+            return new ResponseEntity<>("Employee not found with id: " + id + " in " + dbName, HttpStatus.OK);
         }
     }
 
@@ -79,8 +81,8 @@ public class EmployeeController {
             logger.info("update ended");
             return new ResponseEntity<>(updated, HttpStatus.OK);
         }
-        logger.error("Employee not found with id: " + id + " in " + DB_NAME);
-        return new ResponseEntity<>("Employee with id: " + id + " not found in " + DB_NAME, HttpStatus.OK);
+        logger.error("Employee not found with id: " + id + " in " + dbName);
+        return new ResponseEntity<>("Employee with id: " + id + " not found in " + dbName, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -92,9 +94,9 @@ public class EmployeeController {
             logger.info("delete ended");
             return new ResponseEntity<>("Employee with id: " + id + " successfully deleted", HttpStatus.OK);
         }
-        logger.error("Employee with id: " + id + " not found in " + DB_NAME);
+        logger.error("Employee with id: " + id + " not found in " + dbName);
         logger.info("delete ended");
-        return new ResponseEntity<>("Employee with id: " + id + " not found in " + DB_NAME, HttpStatus.OK);
+        return new ResponseEntity<>("Employee with id: " + id + " not found in " + dbName, HttpStatus.OK);
     }
 
     @GetMapping("/count")
@@ -102,7 +104,7 @@ public class EmployeeController {
         logger.info("findByName called");
         int i = service.findEmployeesCount();
         logger.info("findByName ended");
-        return new ResponseEntity<>("Total Employees count is " + i + " in " + DB_NAME, HttpStatus.OK);
+        return new ResponseEntity<>("Total Employees count is " + i + " in " + dbName, HttpStatus.OK);
     }
 
 }

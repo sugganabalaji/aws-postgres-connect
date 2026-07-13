@@ -5,6 +5,7 @@ import com.app.awspostgresconnect.entity.Employee;
 import com.app.awspostgresconnect.service.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -26,7 +27,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @WebMvcTest(EmployeeController.class)
 class EmployeeControllerTest {
 
@@ -35,6 +35,9 @@ class EmployeeControllerTest {
 
     @MockitoBean
     private EmployeeService service;
+
+    @Value("${spring.profiles.active}")
+    private String dbName;
 
     @Test
     void testSayOk() throws Exception {
@@ -76,7 +79,7 @@ class EmployeeControllerTest {
 
         mockMvc.perform(get("/api/employees"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Employees not saved in postgres DB"));
+                .andExpect(content().string("Employees not saved in " + dbName));
     }
 
     @Test
@@ -105,7 +108,7 @@ class EmployeeControllerTest {
 
         mockMvc.perform(get("/api/employees/99"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Employee not found with id: 99 in postgres DB"));
+                .andExpect(content().string("Employee not found with id: 99 in " + dbName));
     }
 
     @Test
@@ -182,7 +185,7 @@ class EmployeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"Balaji\",\"companyName\":\"ABC New\",\"departmentName\":\"Dev\"}"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Employee with id: 99 not found in postgres DB"));
+                .andExpect(content().string("Employee with id: 99 not found in " + dbName));
     }
 
 
@@ -203,6 +206,6 @@ class EmployeeControllerTest {
 
         mockMvc.perform(delete("/api/employees/99"))
                 .andExpect(status().isOk()) // your controller returns 200 even for not found
-                .andExpect(content().string("Employee with id: 99 not found in postgres DB"));
+                .andExpect(content().string("Employee with id: 99 not found in " +  dbName));
     }
 }
