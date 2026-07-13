@@ -14,7 +14,7 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(EmployeeRepository repository) {
         return args -> {
-            repository.save(new Employee("John Doe", 15000.0, "ABC", "ADMIN", LocalDate.of(1990, 1, 1)));
+            repository.save(new Employee("Balaji Suggana", 260000.0, "ABC", "IT", LocalDate.of(2016, 06, 27)));
             repository.save(new Employee("Jane Smith", 18000.0, "XYZ", "HR", LocalDate.of(1991, 2, 5)));
             repository.save(new Employee("Ravi Kumar", 20000.0, "TechSoft", "IT", LocalDate.of(1992, 3, 10)));
             repository.save(new Employee("Meena Reddy", 22000.0, "GlobalCorp", "Finance", LocalDate.of(1993, 4, 15)));
