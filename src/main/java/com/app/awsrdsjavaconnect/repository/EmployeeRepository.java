@@ -1,6 +1,6 @@
-package com.app.awspostgresconnect.repository;
+package com.app.awsrdsjavaconnect.repository;
 
-import com.app.awspostgresconnect.entity.Employee;
+import com.app.awsrdsjavaconnect.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

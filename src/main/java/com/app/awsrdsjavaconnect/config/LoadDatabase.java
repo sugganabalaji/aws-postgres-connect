@@ -1,7 +1,7 @@
-package com.app.awspostgresconnect.config;
+package com.app.awsrdsjavaconnect.config;
 
-import com.app.awspostgresconnect.entity.Employee;
-import com.app.awspostgresconnect.repository.EmployeeRepository;
+import com.app.awsrdsjavaconnect.entity.Employee;
+import com.app.awsrdsjavaconnect.repository.EmployeeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

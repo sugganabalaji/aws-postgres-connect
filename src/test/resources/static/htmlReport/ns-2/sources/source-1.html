@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
-  <title>Coverage Report > EmployeeController</title>
+  <title>Coverage Report > LoadDatabase</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,25 +19,18 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.app.awspostgresconnect.controller</a>
+    <a href="../index.html">com.app.awsrdsjavaconnect.config</a>
 </div>
 
-<h1>Coverage Summary for Class: EmployeeController (com.app.awspostgresconnect.controller)</h1>
+<h1>Coverage Summary for Class: LoadDatabase (com.app.awsrdsjavaconnect.config)</h1>
 
 <table class="coverageStats">
+
 <tr>
   <th class="name">Class</th>
 <th class="coverageStat 
 ">
-  Class, %
-</th>
-<th class="coverageStat 
-">
   Method, %
-</th>
-<th class="coverageStat 
-">
-  Branch, %
 </th>
 <th class="coverageStat 
 ">
@@ -45,13 +38,13 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">EmployeeController</td>
+  <td class="name">LoadDatabase</td>
 <td class="coverageStat">
   <span class="percent">
     100%
   </span>
   <span class="absValue">
-    (1/1)
+    (3/3)
   </span>
 </td>
 <td class="coverageStat">
@@ -59,27 +52,38 @@ Current scope:     <a href="../../index.html">all classes</a>
     100%
   </span>
   <span class="absValue">
-    (7/7)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    100%
-  </span>
-  <span class="absValue">
-    (8/8)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    100%
-  </span>
-  <span class="absValue">
-    (37/37)
+    (52/52)
   </span>
 </td>
 </tr>
-
+  <tr>
+    <td class="name">LoadDatabase$$SpringCGLIB$$0</td>
+  </tr>
+  <tr>
+    <td class="name">LoadDatabase$$SpringCGLIB$$FastClass$$0</td>
+  </tr>
+  <tr>
+    <td class="name">LoadDatabase$$SpringCGLIB$$FastClass$$1</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (52/52)
+  </span>
+</td>
+</tr>
 </table>
 
 <br/>
@@ -87,99 +91,77 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.app.awspostgresconnect.controller;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.app.awsrdsjavaconnect.config;
 &nbsp;
-&nbsp;import com.app.awspostgresconnect.dto.EmployeeDTO;
-&nbsp;import com.app.awspostgresconnect.entity.Employee;
-&nbsp;import com.app.awspostgresconnect.service.EmployeeService;
-&nbsp;import org.slf4j.Logger;
-&nbsp;import org.slf4j.LoggerFactory;
-&nbsp;import org.springframework.beans.factory.annotation.Autowired;
-&nbsp;import org.springframework.http.HttpStatus;
-&nbsp;import org.springframework.http.ResponseEntity;
-&nbsp;import org.springframework.web.bind.annotation.DeleteMapping;
-&nbsp;import org.springframework.web.bind.annotation.GetMapping;
-&nbsp;import org.springframework.web.bind.annotation.PathVariable;
-&nbsp;import org.springframework.web.bind.annotation.PostMapping;
-&nbsp;import org.springframework.web.bind.annotation.PutMapping;
-&nbsp;import org.springframework.web.bind.annotation.RequestBody;
-&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
-&nbsp;import org.springframework.web.bind.annotation.RestController;
+&nbsp;import com.app.awsrdsjavaconnect.entity.Employee;
+&nbsp;import com.app.awsrdsjavaconnect.repository.EmployeeRepository;
+&nbsp;import org.springframework.boot.CommandLineRunner;
+&nbsp;import org.springframework.context.annotation.Bean;
+&nbsp;import org.springframework.context.annotation.Configuration;
 &nbsp;
-&nbsp;import java.util.List;
-&nbsp;import java.util.Optional;
+&nbsp;import java.time.LocalDate;
 &nbsp;
-&nbsp;@RestController
-&nbsp;@RequestMapping(&quot;/api/employees&quot;)
-<b class="fc">&nbsp;public class EmployeeController {</b>
+&nbsp;@Configuration
+<b class="fc">&nbsp;public class LoadDatabase {</b>
 &nbsp;
-<b class="fc">&nbsp;    Logger logger = LoggerFactory.getLogger(EmployeeController.class);</b>
+&nbsp;    @Bean
+&nbsp;    CommandLineRunner initDatabase(EmployeeRepository repository) {
+<b class="fc">&nbsp;        return args -&gt; {</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;John Doe&quot;, 15000.0, &quot;ABC&quot;, &quot;ADMIN&quot;, LocalDate.of(1990, 1, 1)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Jane Smith&quot;, 18000.0, &quot;XYZ&quot;, &quot;HR&quot;, LocalDate.of(1991, 2, 5)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Ravi Kumar&quot;, 20000.0, &quot;TechSoft&quot;, &quot;IT&quot;, LocalDate.of(1992, 3, 10)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Meena Reddy&quot;, 22000.0, &quot;GlobalCorp&quot;, &quot;Finance&quot;, LocalDate.of(1993, 4, 15)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Alex Johnson&quot;, 25000.0, &quot;ABC&quot;, &quot;Sales&quot;, LocalDate.of(1994, 5, 20)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Sara Lee&quot;, 17000.0, &quot;XYZ&quot;, &quot;Support&quot;, LocalDate.of(1995, 6, 25)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Krishna Rao&quot;, 21000.0, &quot;TechSoft&quot;, &quot;Finance&quot;, LocalDate.of(1996, 7, 30)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Priya Sharma&quot;, 23000.0, &quot;GlobalCorp&quot;, &quot;Engineering&quot;, LocalDate.of(1997, 8, 12)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;David Brown&quot;, 16000.0, &quot;ABC&quot;, &quot;HR&quot;, LocalDate.of(1998, 9, 18)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Emily Davis&quot;, 24000.0, &quot;XYZ&quot;, &quot;Sales&quot;, LocalDate.of(1999, 10, 22)));</b>
 &nbsp;
-&nbsp;    @Autowired
-&nbsp;    private EmployeeService service;
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Michael Scott&quot;, 26000.0, &quot;TechSoft&quot;, &quot;Engineering&quot;, LocalDate.of(2000, 11, 5)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Angela Martin&quot;, 19000.0, &quot;GlobalCorp&quot;, &quot;Finance&quot;, LocalDate.of(2001, 12, 9)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Dwight Schrute&quot;, 20000.0, &quot;ABC&quot;, &quot;Sales&quot;, LocalDate.of(2002, 1, 14)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Pam Beesly&quot;, 17500.0, &quot;XYZ&quot;, &quot;Support&quot;, LocalDate.of(2003, 2, 19)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Jim Halpert&quot;, 27000.0, &quot;TechSoft&quot;, &quot;Engineering&quot;, LocalDate.of(2004, 3, 24)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Stanley Hudson&quot;, 18500.0, &quot;GlobalCorp&quot;, &quot;HR&quot;, LocalDate.of(2005, 4, 29)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Kelly Kapoor&quot;, 16500.0, &quot;ABC&quot;, &quot;Support&quot;, LocalDate.of(2006, 5, 3)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Oscar Martinez&quot;, 21000.0, &quot;XYZ&quot;, &quot;Finance&quot;, LocalDate.of(2007, 6, 8)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Kevin Malone&quot;, 16000.0, &quot;TechSoft&quot;, &quot;Finance&quot;, LocalDate.of(2008, 7, 13)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Meredith Palmer&quot;, 15500.0, &quot;GlobalCorp&quot;, &quot;HR&quot;, LocalDate.of(2009, 8, 18)));</b>
 &nbsp;
-&nbsp;    @GetMapping(&quot;/ok&quot;)
-&nbsp;    public ResponseEntity&lt;String&gt; sayOk() {
-<b class="fc">&nbsp;        logger.info(&quot;Ok&quot;);</b>
-<b class="fc">&nbsp;        return ResponseEntity.status(HttpStatus.OK).body(&quot;Ok.. :)&quot;);</b>
-&nbsp;    }
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Ryan Howard&quot;, 22000.0, &quot;ABC&quot;, &quot;Sales&quot;, LocalDate.of(2010, 9, 23)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Toby Flenderson&quot;, 18000.0, &quot;XYZ&quot;, &quot;HR&quot;, LocalDate.of(2011, 10, 28)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Holly Flax&quot;, 24000.0, &quot;TechSoft&quot;, &quot;HR&quot;, LocalDate.of(2012, 11, 2)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Andy Bernard&quot;, 20000.0, &quot;GlobalCorp&quot;, &quot;Sales&quot;, LocalDate.of(2013, 12, 7)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Erin Hannon&quot;, 17000.0, &quot;ABC&quot;, &quot;Support&quot;, LocalDate.of(2014, 1, 12)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Charles Miner&quot;, 28000.0, &quot;XYZ&quot;, &quot;Engineering&quot;, LocalDate.of(2015, 2, 17)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Jan Levinson&quot;, 30000.0, &quot;TechSoft&quot;, &quot;Finance&quot;, LocalDate.of(2016, 3, 22)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Darryl Philbin&quot;, 23000.0, &quot;GlobalCorp&quot;, &quot;Support&quot;, LocalDate.of(2017, 4, 27)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Roy Anderson&quot;, 19000.0, &quot;ABC&quot;, &quot;Engineering&quot;, LocalDate.of(2018, 5, 2)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Carol Stills&quot;, 21000.0, &quot;XYZ&quot;, &quot;Finance&quot;, LocalDate.of(2019, 6, 7)));</b>
 &nbsp;
-&nbsp;    @GetMapping
-&nbsp;    public ResponseEntity&lt;Object&gt; findAll() {
-<b class="fc">&nbsp;        logger.info(&quot;findAll called&quot;);</b>
-<b class="fc">&nbsp;        List&lt;Employee&gt; allEmployees = service.findAll();</b>
-<b class="fc">&nbsp;        logger.info(&quot;findAll ended&quot;);</b>
-<b class="fc">&nbsp;        if(allEmployees.isEmpty()) {</b>
-<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(&quot;Employees not saved in postgres DB&quot;, HttpStatus.OK);</b>
-&nbsp;        }
-<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(allEmployees, HttpStatus.OK);</b>
-&nbsp;    }
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Josh Porter&quot;, 26000.0, &quot;TechSoft&quot;, &quot;Engineering&quot;, LocalDate.of(2020, 7, 12)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Karen Filippelli&quot;, 22000.0, &quot;GlobalCorp&quot;, &quot;Sales&quot;, LocalDate.of(2021, 8, 17)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Nellie Bertram&quot;, 23000.0, &quot;ABC&quot;, &quot;HR&quot;, LocalDate.of(2022, 9, 22)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Clark Green&quot;, 18000.0, &quot;XYZ&quot;, &quot;Engineering&quot;, LocalDate.of(2023, 10, 27)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Pete Miller&quot;, 20000.0, &quot;TechSoft&quot;, &quot;Support&quot;, LocalDate.of(2024, 11, 1)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Hank Tate&quot;, 15000.0, &quot;GlobalCorp&quot;, &quot;Support&quot;, LocalDate.of(2025, 12, 6)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Madge Madsen&quot;, 16000.0, &quot;ABC&quot;, &quot;HR&quot;, LocalDate.of(2026, 1, 11)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Lonny Collins&quot;, 21000.0, &quot;XYZ&quot;, &quot;Support&quot;, LocalDate.of(2026, 2, 16)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Glenn&quot;, 17000.0, &quot;TechSoft&quot;, &quot;Engineering&quot;, LocalDate.of(2026, 3, 21)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Jessica&quot;, 19000.0, &quot;GlobalCorp&quot;, &quot;Finance&quot;, LocalDate.of(2026, 4, 26)));</b>
 &nbsp;
-&nbsp;    @GetMapping(&quot;/{id}&quot;)
-&nbsp;    public ResponseEntity&lt;Object&gt; findById(@PathVariable Long id) {
-<b class="fc">&nbsp;        logger.info(&quot;findById called&quot;);</b>
-<b class="fc">&nbsp;        Optional&lt;Employee&gt; optional = service.findById(id);</b>
-<b class="fc">&nbsp;        if(optional.isPresent()) {</b>
-<b class="fc">&nbsp;            logger.info(&quot;findById ended&quot;);</b>
-<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(optional.get(), HttpStatus.OK);</b>
-&nbsp;        } else {
-<b class="fc">&nbsp;            logger.error(&quot;Employee not found with id: &quot; + id + &quot; in postgres DB&quot;);</b>
-<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(&quot;Employee not found with id: &quot; + id + &quot; in postgres DB&quot;, HttpStatus.OK);</b>
-&nbsp;        }
-&nbsp;    }
-&nbsp;
-&nbsp;    @PostMapping
-&nbsp;    public ResponseEntity&lt;Employee&gt; save(@RequestBody EmployeeDTO employee) {
-<b class="fc">&nbsp;        logger.info(&quot;save started&quot;);</b>
-<b class="fc">&nbsp;        Employee savedEmployee = service.save(employee);</b>
-<b class="fc">&nbsp;        logger.info(&quot;save ended&quot;);</b>
-<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(savedEmployee, HttpStatus.CREATED);</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    @PutMapping(&quot;/{id}&quot;)
-&nbsp;    public ResponseEntity&lt;Object&gt; update(@PathVariable Long id, @RequestBody EmployeeDTO employee) {
-<b class="fc">&nbsp;        logger.info(&quot;update called with id: &quot; + id);</b>
-<b class="fc">&nbsp;        if(service.findById(id).isPresent()) {</b>
-<b class="fc">&nbsp;            Employee updated = service.update(id, employee);</b>
-<b class="fc">&nbsp;            logger.info(&quot;update ended&quot;);</b>
-<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(updated, HttpStatus.OK);</b>
-&nbsp;        }
-<b class="fc">&nbsp;        logger.error(&quot;Employee not found with id: &quot; + id + &quot; in postgres DB&quot;);</b>
-<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(&quot;Employee with id: &quot; + id + &quot; not found in postgres DB&quot;, HttpStatus.OK);</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    @DeleteMapping(&quot;/{id}&quot;)
-&nbsp;    public ResponseEntity&lt;Object&gt; delete(@PathVariable Long id) {
-<b class="fc">&nbsp;        logger.info(&quot;delete called&quot;);</b>
-<b class="fc">&nbsp;        boolean isDeleted = service.delete(id);</b>
-<b class="fc">&nbsp;        if(isDeleted) {</b>
-<b class="fc">&nbsp;            logger.info(&quot;Employee with id: &quot; + id + &quot; successfully deleted&quot;);</b>
-<b class="fc">&nbsp;            logger.info(&quot;delete ended&quot;);</b>
-<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(&quot;Employee with id: &quot; + id + &quot; successfully deleted&quot;, HttpStatus.OK);</b>
-&nbsp;        }
-<b class="fc">&nbsp;        logger.error(&quot;Employee with id: &quot; + id + &quot; not found in postgres DB&quot;);</b>
-<b class="fc">&nbsp;        logger.info(&quot;delete ended&quot;);</b>
-<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(&quot;Employee with id: &quot; + id + &quot; not found in postgres DB&quot;, HttpStatus.OK);</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Mark&quot;, 20000.0, &quot;ABC&quot;, &quot;Sales&quot;, LocalDate.of(2026, 5, 1)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Sophia&quot;, 25000.0, &quot;XYZ&quot;, &quot;Engineering&quot;, LocalDate.of(2026, 6, 6)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Daniel&quot;, 18000.0, &quot;TechSoft&quot;, &quot;HR&quot;, LocalDate.of(2026, 7, 11)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Olivia&quot;, 22000.0, &quot;GlobalCorp&quot;, &quot;Finance&quot;, LocalDate.of(2026, 8, 16)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Ethan&quot;, 21000.0, &quot;ABC&quot;, &quot;Sales&quot;, LocalDate.of(2026, 9, 21)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Ava&quot;, 17000.0, &quot;XYZ&quot;, &quot;Support&quot;, LocalDate.of(2026, 10, 26)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Liam&quot;, 26000.0, &quot;TechSoft&quot;, &quot;Engineering&quot;, LocalDate.of(2026, 11, 1)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Isabella&quot;, 23000.0, &quot;GlobalCorp&quot;, &quot;Finance&quot;, LocalDate.of(2026, 12, 6)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Noah&quot;, 20000.0, &quot;ABC&quot;, &quot;Sales&quot;, LocalDate.of(2026, 1, 11)));</b>
+<b class="fc">&nbsp;            repository.save(new Employee(&quot;Mia&quot;, 18000.0, &quot;XYZ&quot;, &quot;Support&quot;, LocalDate.of(2026, 2, 16)));</b>
+&nbsp;        };
 &nbsp;    }
 &nbsp;
 &nbsp;}
@@ -206,7 +188,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2026-07-11 19:20</div>
+    <div style="float:right;">generated on 2026-07-13 16:53</div>
 </div>
 </body>
 </html>

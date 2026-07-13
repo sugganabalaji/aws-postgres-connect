@@ -1,8 +1,8 @@
-package com.app.awspostgresconnect.controller;
+package com.app.awsrdsjavaconnect.controller;
 
-import com.app.awspostgresconnect.dto.EmployeeDTO;
-import com.app.awspostgresconnect.entity.Employee;
-import com.app.awspostgresconnect.service.EmployeeService;
+import com.app.awsrdsjavaconnect.dto.EmployeeDTO;
+import com.app.awsrdsjavaconnect.entity.Employee;
+import com.app.awsrdsjavaconnect.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

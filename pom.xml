@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.app</groupId>
-    <artifactId>aws-postgres-connect</artifactId>
+    <artifactId>aws-rds-java-connect</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>aws-postgres-connect</name>
-    <description>aws-postgres-connect</description>
+    <name>aws-rds-java-connect</name>
+    <description>aws-rds-java-connect</description>
     <url/>
     <licenses>
         <license/>

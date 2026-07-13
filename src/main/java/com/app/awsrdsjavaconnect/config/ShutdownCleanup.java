@@ -1,6 +1,6 @@
-package com.app.awspostgresconnect.config;
+package com.app.awsrdsjavaconnect.config;
 
-import com.app.awspostgresconnect.repository.EmployeeRepository;
+import com.app.awsrdsjavaconnect.repository.EmployeeRepository;
 import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
 

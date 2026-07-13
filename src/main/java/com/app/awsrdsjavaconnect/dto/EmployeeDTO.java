@@ -1,45 +1,14 @@
-package com.app.awspostgresconnect.entity;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+package com.app.awsrdsjavaconnect.dto;
 
 import java.time.LocalDate;
 
-@Entity
-public class Employee {
+public class EmployeeDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(length = 50)
     private String name;
     private double salary;
-    @Column(length = 100)
     private String companyName;
-    @Column(length = 25)
     private String departmentName;
     private LocalDate dateOfJoining;
-
-    public Employee() {}
-
-    public Employee(String name, double salary, String companyName, String departmentName, LocalDate dateOfJoining) {
-        this.name = name;
-        this.salary = salary;
-        this.companyName = companyName;
-        this.departmentName = departmentName;
-        this.dateOfJoining = dateOfJoining;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -83,9 +52,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "EmployeeDTO{" +
+                "name='" + name + '\'' +
                 ", salary=" + salary +
                 ", companyName='" + companyName + '\'' +
                 ", departmentName='" + departmentName + '\'' +
